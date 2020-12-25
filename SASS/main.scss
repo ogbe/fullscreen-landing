@@ -1,0 +1,120 @@
+$large-text: 4em;
+$small-text: 2em;
+$default-text: 1.5em;
+
+$padding: 20px;
+$borders: 10px;
+
+$desktop: 550px;
+
+$colors : (
+    primary: #FFF,
+    primary-light: mix(white, #926239, 70%),
+    secondary: #926239
+);
+
+@mixin desktop {
+    @media (min-width: #{$desktop}) {
+        @content;
+    }
+}
+
+@function colors($color-name) {
+    @return map-get($map: $colors, $key: $color-name)
+};
+
+body, html {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-align: center;
+
+    header {
+        background: url('../images/photo-8.jpeg') center ;
+        background-size: cover;
+        min-height: 100vh;
+        color: colors(primary-light);
+        padding-top: 100px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        h1 {
+            text-transform: capitalize;
+            font-size: $large-text;
+        }
+
+        p {
+            font-size: $small-text;
+            padding: $padding;
+            
+        }
+
+        a {
+            text-transform: capitalize;
+            text-decoration: none;
+            font-size: 1.7em;
+            padding: $padding $padding * 3;
+            margin-bottom: 10px;
+            border: 2px solid #ded0c4;
+            border-radius: $borders;
+            color: inherit;
+        }
+    }
+
+    main {
+
+        #a, #cards {
+            background-color: colors(secondary);
+            color: colors(primary);
+        }
+
+        #b {
+            color: colors(secondary);
+        }
+        section {
+            padding: $padding;
+
+        }
+
+        p {
+            font-size: $default-text;
+            margin: 0;
+        }
+    }
+
+    #cards {
+        padding: 0;
+        
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: $default-text;
+
+            @include desktop {
+                display: flex;
+            }
+
+            li {
+                padding: $padding 10px;
+                box-sizing: border-box;
+
+
+                &:nth-child(2) {
+                    background-color: colors(primary);
+                    color: colors(secondary);
+                }
+            }
+        }
+    }
+}
+
+// the moment
+// the word
+// the time
